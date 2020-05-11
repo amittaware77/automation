@@ -11,7 +11,14 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 
+/**
+ * Class to setup Driver instances
+ * @author Amit Taware
+ *
+ */
 public class DriverManagerUtil {
+	
+	//ThreadLocal is used to support parallel execution.
 	private static ThreadLocal<RemoteWebDriver> webDriver = new ThreadLocal<RemoteWebDriver>();
 	private static ThreadLocal<AndroidDriver<MobileElement>> androidDriver = new ThreadLocal<AndroidDriver<MobileElement>>();
 	private static ThreadLocal<AppiumDriver<MobileElement>> appiumDriver = new ThreadLocal<AppiumDriver<MobileElement>>();
@@ -74,13 +81,14 @@ public class DriverManagerUtil {
 		 }  
     }
 	
-	// Stops Driver instance for the running session
+	//Stops Driver instance for the running session
 	public static void stopAppiumDriver() {    	
 		try {			
 				getAppiumDriver().closeApp();				
 				getAppiumDriver().close();
 				getAppiumDriver().quit();	
 		} catch (Exception e) {
+			e.printStackTrace();
 			LoggerUtil.logConsoleMessage("Error while closing the app.");
 		}
 	}	

@@ -5,10 +5,14 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import com.cognizant.test.common.config.Config;
 import com.cognizant.test.common.config.TestRun;
 
-
+/**
+ * Class to set desired capabilities and initiate Appium driver
+ * @author Amit Taware
+ *
+ */
 public class CapabilityFactoryUtil {
 
-	//Set DesiredCapabilities
+	//Set DesiredCapabilities.
     public static void initiateDriver() {
     	DesiredCapabilities capabilities = new DesiredCapabilities();		 
 		   		
@@ -22,12 +26,13 @@ public class CapabilityFactoryUtil {
 					capabilities.setCapability("udid", TestRun.getUdid());
 				}
 		
-			//Common for Android & iOS
+			//Common desiredcapabilities for Android & iOS
     		capabilities.setCapability("deviceName", TestRun.getDeviceName());		
     		capabilities.setCapability("platformName", TestRun.getPlatformName());		
     		capabilities.setCapability("platformVersion", TestRun.getPlatformVersion());
     		capabilities.setCapability("automationName", TestRun.getAutomationName());	
 
+    //Initiates appium driver		
 	DriverManagerUtil.initiateAppiumDriver(capabilities);
     }  
 

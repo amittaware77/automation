@@ -1,6 +1,12 @@
 package com.cognizant.test.common.utils;
 
 import java.text.SimpleDateFormat;
+
+/**
+ * Class for loging message
+ * @author Amit Taware
+ *
+ */
 import java.util.Date;
 
 import org.apache.log4j.Level;
@@ -9,6 +15,7 @@ import org.testng.Reporter;
 public class LoggerUtil {
    static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger("devpinoyLogger"); 
 	 
+   //Logs a message to the console, the TestNG reports.
    public static void logMessage(String message) {
 		Reporter.log(message, false);
 		logConsoleMessage(message);

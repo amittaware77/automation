@@ -18,8 +18,8 @@ Then I should be navigated to the "Home" screen
 #Then I should see the purchased "Product" on Checkout screen
 
 Examples:
-|Email_Id             |Password|
-|Your email id|Your password|
+|Email_Id     |Password     |Product   |
+|Your email id|Your password|65-inch TV|
 
 
 #Can't perform commented steps as Amazon has disabled buy and add to cart button

@@ -10,8 +10,14 @@ import com.cognizant.test.common.config.Config;
 
 import io.appium.java_client.MobileElement;
 
+/**
+ * Class having mobile specific reusable methods
+ * @author Amit Taware
+ *
+ */
 public class MobileInteractUtil {
 
+	//Switches to WebView
 	public boolean switchToWebView() {
 		boolean status = false;
 		
@@ -27,7 +33,7 @@ public class MobileInteractUtil {
 	    return status;
 	}
 
-  
+	//Waits for mobile element and clicks on it
     public static boolean click(MobileElement mobileElement) {
     	boolean status = false;
 		try {
@@ -53,7 +59,7 @@ public class MobileInteractUtil {
 		return status;
 	}
     
-  
+    //Waits for mobile element and enters text in it
     public static boolean sendKeys(MobileElement mobileElement, String text) {
     	boolean status = false;
 		try {
@@ -70,7 +76,7 @@ public class MobileInteractUtil {
 		return status;
 	}
     
-   
+    //Waits for mobile element and clears text in it
     public static boolean clear(MobileElement mobileElement) {
     	boolean status = false;
 		try {
@@ -85,7 +91,7 @@ public class MobileInteractUtil {
 		return status;
 	}     
          
-   
+    //Waits for mobile element visibility
     public static boolean waitForVisible(MobileElement mobileElement, int timeOut) {
     	boolean status = false;
 		try {
@@ -93,14 +99,14 @@ public class MobileInteractUtil {
 				wait.until(ExpectedConditions.visibilityOf(mobileElement));
 				status = true;
 		} catch (Exception e) {
-			//e.printStackTrace();
-			//LoggerUtil.logErrorMessage("WebElement not visible: " + mobileElement.toString());
+			e.printStackTrace();
+			LoggerUtil.logErrorMessage("WebElement not visible: " + mobileElement.toString());
 		}
 		
 		return status;
 	}
     
-   
+    //Verifies element is present
    	public static boolean isPresent(MobileElement mobileElement) {
 	   	boolean status = false;
 	   	
@@ -115,7 +121,7 @@ public class MobileInteractUtil {
        return status;
    	} 
    	 
-   	
+   	//Verifies element is enabled
    	public static boolean isEnabled(MobileElement mobileElement) {
 	   	boolean status = false;
 	   	
@@ -130,7 +136,7 @@ public class MobileInteractUtil {
        return status;
    	} 
  
-   
+    //Fetches elements specific attribute value
     public static String getAttribute(MobileElement mobileElement, String attribute) {
     	String attributeValue = "";   
     	
@@ -145,7 +151,7 @@ public class MobileInteractUtil {
          return attributeValue;
      }
      
-    
+    //Determines if an element has a specific text value or not
     public static boolean verifyText(MobileElement mobileElement, String text) {
     	boolean status = false;
     	
@@ -160,7 +166,7 @@ public class MobileInteractUtil {
          return status;
      }
       
-    
+    //Determines if an element has a specific attribute value or not
     public static boolean verifyAttribute(MobileElement mobileElement, String attribute, String attributeValue) {
     	 boolean status = false;
       	
@@ -175,7 +181,7 @@ public class MobileInteractUtil {
          return status;
      }
        
-   
+    //Determines if an element has a specific attribute value or not
     public static boolean verifyAttributeContains(MobileElement mobileElement, String attribute, String attributeValue) {
     	boolean status = false;   
 
@@ -189,18 +195,4 @@ public class MobileInteractUtil {
         return status;
     }
 	    
-       
-   	public static boolean isClickable(MobileElement mobileElement) {
-	   	boolean status = false;
-	   	
-	   	try {
-			WebDriverWait wait = new WebDriverWait(DriverManagerUtil.getAppiumDriver(), Config.MEDIUM_PAUSE);
-			wait.until(ExpectedConditions.elementToBeClickable(mobileElement)).click();
-			status = true;
-	   	}
-	   	catch (StaleElementReferenceException e1) {
-			
-		} 
-       return status;
-   	} 
 }
